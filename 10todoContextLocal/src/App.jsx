@@ -25,7 +25,7 @@ function App() {
   }
 
   const toggleComplete = (id) => {
-    setTodos((prev) => prev.map((prevTodo) => prevTodo === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
+    setTodos((prev) => prev.map((prevTodo) => prevTodo.id === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
   }
 
   // local storage me store karna to easy hai.. but vo hamesha string format me store hota hai... to kabhi bhi use karna ho or smth.. we have to convert it in json...

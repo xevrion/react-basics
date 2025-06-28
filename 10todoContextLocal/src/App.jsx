@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { TodoProvider } from "./contexts";
 import TodoForm from "./components/TodoForm";
+import TodoItem from "./components/TodoItem";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -37,7 +38,7 @@ function App() {
     const todos = JSON.parse(localStorage.getItem("todos")) // idhar tk 50% local storage khtm.. LMAO DEAD
 
     if(todos && todos.length){
-
+      setTodos(todos)
     } // to check if todos exist or not... nahi hai to application crash mar degi na..
   }, [])
   
@@ -61,6 +62,15 @@ function App() {
           </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
+            {todos.map((todo) => (
+              <div key={todo.id}
+              className="w-full">
+                <TodoItem todo={todo}/>
+
+              </div>
+            ))}
+
+            {/* damn.. curly braces lagayege to hume value return karni padti hai js me.. but agar normal round braces lagate hai to auto return ho jata hai... */}
           </div>
         </div>
       </div>

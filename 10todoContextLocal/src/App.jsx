@@ -19,7 +19,11 @@ function App() {
   };
 
   const deleteTodo = (todo) => {
-    setTodos((prev) => )
+    setTodos((prev) => prev.filter((todo) => todo.id !== id)) // jo match nahi karega.. vo aata jayega... jo match karega.. vo reh jayega.... matlab vo delete ho gya :) vapas update ni hua vo.. aisa smjh lo..
+  }
+
+  const toggleComplete = (id) => {
+    setTodos((prev) => prev.map((prevTodo) => prevTodo === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
   }
 
   return (

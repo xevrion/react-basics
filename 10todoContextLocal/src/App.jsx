@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -25,6 +25,26 @@ function App() {
   const toggleComplete = (id) => {
     setTodos((prev) => prev.map((prevTodo) => prevTodo === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
   }
+
+  // local storage me store karna to easy hai.. but vo hamesha string format me store hota hai... to kabhi bhi use karna ho or smth.. we have to convert it in json...
+  // koi aisa method hai jo page load hote hi... local storage se data nikal ke.. sidha page me show karde..?? btao btao.... which is use effect
+
+
+  // jab tk aap react me ho.. and server side rendering ki baat nahi kr rhe ho.. tb tk aap local storage ko access kar skte ho..
+  useEffect(() => {
+    // localStorage.getItem("todos") // get krna pehle zruri hai.. set se.. kyun??
+    const todos = JSON.parse(localStorage.getItem("todos")) // idhar tk 50% local storage khtm.. LMAO DEAD
+
+    if(todos && todos.length){
+
+    } // to check if todos exist or not... nahi hai to application crash mar degi na..
+  }, [])
+  
+  // btw we can use multiple useEffect too...
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
+
 
   return (
     <TodoProvider

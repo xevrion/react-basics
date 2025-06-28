@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { TodoProvider } from "./contexts";
+import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -55,7 +56,9 @@ function App() {
           <h1 className="text-2xl font-bold text-center mb-8 mt-2">
             Manage Your Todos
           </h1>
-          <div className="mb-4">{/* Todo form goes here */}</div>
+          <div className="mb-4">
+            <TodoForm/>
+          </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
           </div>

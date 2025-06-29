@@ -28,9 +28,19 @@ export const todoSlice = createSlice({
         }, // we'll always get this 2 things, state and action. state is the current state of the slice, and action is the action that is dispatched to the slice.
         removeTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload.id) // same as we used in the previous todo app, here we'll just filter the todo which we don't want to have in the todos, so just we won't select that and won't replace it.. we'll put the other values in the todos.. and ignore the array which we want to remove by filtering it out.
-         }, // state is the currentState of the slice, and action is the data attached.. (smth like that... smjh lo..)
+        }, // state is the currentState of the slice, and action is the data attached.. (smth like that... smjh lo..)
 
         // Task: Make updateTodo function that will update the text of the todo.
+
+        updateTodo: (state, action) => {
+            const { id, text } = action.payload; // here we are destructuring the payload to get the id and text of the todo.
+
+            const todo = state.todos.find((todo) => todo.id === id); // here we are finding the todo with the id that we got from the payload.
+
+            if (todo) { // if the todo is found, then we will update the text of the todo.
+                todo.text = text;
+            }
+        },
 
 
     } // so what does reducers include? it includes properties and functions that will modify the state.
@@ -39,6 +49,6 @@ export const todoSlice = createSlice({
 
 // iske steps hai vo yaad rakho, itna bhi complex nahi hai, bas yaad rakhna hai ki createSlice se slice banta hai, usme name, initialState aur reducers hote hai. reducers me functions hote hai jo state ko modify karte hai.
 
-export const {addTodo, removeTodo} = todoSlice.actions // here we just exported individual functions from the slice, so that we can use them in the components.
+export const { addTodo, removeTodo } = todoSlice.actions // here we just exported individual functions from the slice, so that we can use them in the components.
 
 export default todoSlice.reducer // here we exported the reducer of the slice, so that we can use it in the store.

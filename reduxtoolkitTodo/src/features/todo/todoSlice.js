@@ -27,7 +27,7 @@ export const todoSlice = createSlice({
 
         }, // we'll always get this 2 things, state and action. state is the current state of the slice, and action is the action that is dispatched to the slice.
         removeTodo: (state, action) => {
-            state.todos = state.todos.filter((todo) => todo.id !== action.payload.id) // same as we used in the previous todo app, here we'll just filter the todo which we don't want to have in the todos, so just we won't select that and won't replace it.. we'll put the other values in the todos.. and ignore the array which we want to remove by filtering it out.
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload) // action.payload should be the id directly, not an object with id property.
         }, // state is the currentState of the slice, and action is the data attached.. (smth like that... smjh lo..)
 
         // Task: Make updateTodo function that will update the text of the todo.

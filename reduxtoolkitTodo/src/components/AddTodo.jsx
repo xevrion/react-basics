@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { addTodo } from "../features/todo/todoSlice";
+import { addTodo, updateTodo } from "../features/todo/todoSlice";
 
 function AddTodo() {
   // so here we are adding a todo..
@@ -12,14 +12,18 @@ function AddTodo() {
 
   const addTodoHandler = (e) => {
     e.preventDefault();
-    if(input === ""){
+    if (input === "") {
       alert("Todo can't be empty");
-      return
+      return;
     }
     dispatch(addTodo(input)); // when this was not here, we had to send all this action.payload and other things, but now we can just give the "input" as the input to the Todo.
 
     // ok, we done this but we didnt clear the input field after the user has submitted the new todo..
-    setInput('') // so we selected the input and cleaned it..
+    setInput(""); // so we selected the input and cleaned it..
+  };
+
+  const updateTodoHandler = (e) => {
+    setInput("hi");
   };
 
   return (
@@ -42,3 +46,5 @@ function AddTodo() {
 }
 
 export default AddTodo;
+
+

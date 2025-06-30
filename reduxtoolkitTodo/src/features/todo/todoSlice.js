@@ -49,6 +49,6 @@ export const todoSlice = createSlice({
 
 // iske steps hai vo yaad rakho, itna bhi complex nahi hai, bas yaad rakhna hai ki createSlice se slice banta hai, usme name, initialState aur reducers hote hai. reducers me functions hote hai jo state ko modify karte hai.
 
-export const { addTodo, removeTodo } = todoSlice.actions // here we just exported individual functions from the slice, so that we can use them in the components.
+export const { addTodo, removeTodo, updateTodo } = todoSlice.actions // here we just exported individual functions from the slice, so that we can use them in the components.
 
 export default todoSlice.reducer // here we exported the reducer of the slice, so that we can use it in the store.

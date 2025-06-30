@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeTodo } from "../features/todo/todoSlice";
+import { removeTodo, updateTodo } from "../features/todo/todoSlice";
 import AddTodo from "./AddTodo";
+// import { updateTodoHandler } from "./AddTodo";
+
 
 function Todos() {
   // now, we have to fetch the list of todos.. so how do we do that?
@@ -22,7 +24,7 @@ function Todos() {
             <div className="text-white">{todo.text}</div>
             <div className="px-2 flex gap-2">
               <button
-                // onClick={}
+                // onClick={updateTodoHandler}
                 className="text-white bg-green-500 border-0 py-1 px-4 focus:outline-none hover:bg-green-300 rounded text-md"
               >
                 <svg
